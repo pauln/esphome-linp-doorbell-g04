@@ -1,0 +1,1 @@
+// Placeholder file; this component's just a stub to register remote protocols.
