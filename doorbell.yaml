@@ -45,6 +45,11 @@ ota:
 logger:
   level: DEBUG
 
+# Import the external component.
+external_components:
+  - source: github://pauln/esphome-linp-doorbell-g04
+    components: [ linptech_g6l ]
+    
 # Add remote protocols for buttons and chime chip.
 linptech_g6l:
 
