@@ -10,6 +10,9 @@ esp32:
       CONFIG_FREERTOS_UNICORE: y
     advanced:
       ignore_efuse_mac_crc: True
+      # Required for ESPHome v2024.10 and later - see issue #9
+      # Remove for earlier ESPHome versions, which don't support this option.
+      ignore_efuse_custom_mac: True
 
 wifi:
   ssid: !secret wifi_ssid
