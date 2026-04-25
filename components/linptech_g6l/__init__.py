@@ -112,7 +112,7 @@ async def szy8039b_action(var, config, args):
     cg.add(var.set_volume(template_))
     template_ = await cg.templatable(config[CONF_MODE], args, cg.uint8)
     cg.add(var.set_mode(template_))
-    template_ = await cg.templatable(config[CONF_COMMAND], args, cg.uint8)
+    template_ = await cg.templatable(config[CONF_COMMAND], args, Szy8039bCommand)
     cg.add(var.set_command(template_))
 
 
