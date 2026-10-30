@@ -13,9 +13,9 @@ struct LinptechG6lData {
 
 class LinptechG6lProtocol : public RemoteProtocol<LinptechG6lData> {
  public:
-  void encode(RemoteTransmitData *dst, const LinptechG6lData &data) override;
-  optional<LinptechG6lData> decode(RemoteReceiveData src) override;
-  void dump(const LinptechG6lData &data) override;
+  void encode(RemoteTransmitData *dst, const LinptechG6lData &data);
+  optional<LinptechG6lData> decode(RemoteReceiveData src);
+  void dump(const LinptechG6lData &data);
 };
 
 DECLARE_REMOTE_PROTOCOL(LinptechG6l)

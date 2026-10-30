@@ -23,9 +23,9 @@ struct Szy8039bData {
 
 class Szy8039bProtocol : public RemoteProtocol<Szy8039bData> {
  public:
-  void encode(RemoteTransmitData *dst, const Szy8039bData &data) override;
-  optional<Szy8039bData> decode(RemoteReceiveData src) override;
-  void dump(const Szy8039bData &data) override;
+  void encode(RemoteTransmitData *dst, const Szy8039bData &data);
+  optional<Szy8039bData> decode(RemoteReceiveData src);
+  void dump(const Szy8039bData &data);
  protected:
   void encode_byte_(RemoteTransmitData *dst, uint8_t byte);
 };
@@ -37,14 +37,14 @@ template<typename... Ts> class Szy8039bAction : public RemoteTransmitterActionBa
   TEMPLATABLE_VALUE(uint8_t, tune)
   TEMPLATABLE_VALUE(uint8_t, volume)
   TEMPLATABLE_VALUE(uint8_t, mode)
-  TEMPLATABLE_VALUE(Szy8039bCommand, command)
+  TEMPLATABLE_VALUE(uint8_t, command)
 
   void encode(RemoteTransmitData *dst, Ts... x) override {
     Szy8039bData data{};
     data.tune = this->tune_.value(x...);
     data.volume = this->volume_.value(x...);
     data.mode = this->mode_.value(x...);
-    data.command = this->command_.value(x...);
+    data.command = static_cast<Szy8039bCommand>(this->command_.value(x...));
     Szy8039bProtocol().encode(dst, data);
   }
 };
